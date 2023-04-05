@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Experience Shisha Shop</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="script.js"></script>
+</head>
+<body>
+	<div class="container">
+		<img src="imagem/bebidas.png" alt="Imagem 1">
+		<img src="imagem/sabores.png" alt="Imagem 2">
+		<img src="imagem/carta de vinhos.png" alt="Imagem 3">
+		<img src="imagem/tabelavalores.png" alt="Imagem 4">
+	</div>
+</body>
+<script>
+	let currentImageIndex = 0;
+let mouseX = 0;
+
+function changeImage() {
+	const images = document.querySelectorAll('.container img');
+
+	for (let i = 0; i < images.length; i++) {
+		images[i].style.display = 'none';
+	}
+
+	if (mouseX < window.innerWidth / 2) {
+		currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+	} else {
+		currentImageIndex = (currentImageIndex + 1) % images.length;
+	}
+
+	images[currentImageIndex].style.display = 'block';
+}
+
+window.onmousemove = function(event) {
+	mouseX = event.clientX;
+}
+
+document.querySelector('.container').onclick = changeImage;
+
+document.querySelector('.container img:first-child').style.display = 'block';
+
+</script>
+</html>
